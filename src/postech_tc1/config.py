@@ -1,3 +1,5 @@
+#TODO: Refactor this file to use .env
+
 SECRET_KEY = "d41d8cd98f00b204e9800998ecf8427e"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60

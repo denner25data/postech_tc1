@@ -7,7 +7,6 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
 
 def verify_token(token: str = Depends(oauth2_scheme)):
     try:
-        print(token)
         payload = decode_access_token(token)
         return payload
     except JWTError:
