@@ -50,3 +50,6 @@ docs/_build/
 
 # Logs
 *.log
+
+# Cache files
+embrapa_cache/

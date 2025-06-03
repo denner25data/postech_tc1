@@ -1,10 +1,22 @@
 import httpx
 from bs4 import BeautifulSoup
 from postech_tc1.api.utils.options import get_opt_url, get_subopt_url
+from postech_tc1.api.utils.embrapa_cache import save, load
 
 BASE_URL = "http://vitibrasil.cnpuv.embrapa.br/index.php"
 
-async def fetch_embrapa(opt: str, ano: int, subopt: str | None = None) -> list[dict]:
+async def fetch_embrapa(
+    opt: str,
+    ano: int,
+    subopt: str | None = None,
+    force: bool = False
+) -> list[dict]:
+    
+    if not force:
+        cached = load(opt, ano, subopt)
+        if cached:
+            return cached
+
     dataset = get_opt_url(opt)
     if not dataset:
         raise ValueError(f"Dataset inválido: {opt}")
@@ -13,7 +25,6 @@ async def fetch_embrapa(opt: str, ano: int, subopt: str | None = None) -> list[d
         "ano": ano,
         "dataset": dataset
     }
-
     if subopt:
         tipo = get_subopt_url(opt, subopt)
         if not tipo:
@@ -24,9 +35,15 @@ async def fetch_embrapa(opt: str, ano: int, subopt: str | None = None) -> list[d
     if "tipo" in params:
         url += f"&subopcao={params['tipo']}"
 
-    async with httpx.AsyncClient() as client:
-        response = await client.get(url)
-        response.raise_for_status()
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url)
+            response.raise_for_status()
+    except (httpx.RequestError, httpx.HTTPStatusError) as e:
+        if cached:
+            return cached
+        raise RuntimeError(f"Erro ao acessar Embrapa e sem dados em cache: {str(e)}")
+
 
     soup = BeautifulSoup(response.text, "html.parser")
     table = soup.find("table", class_="tb_base tb_dados")
@@ -62,5 +79,7 @@ async def fetch_embrapa(opt: str, ano: int, subopt: str | None = None) -> list[d
                     "item": item,
                     "valor": valor,
                 })
+
+    save(opt, ano, subopt, data)
 
     return data
