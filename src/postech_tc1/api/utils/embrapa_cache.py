@@ -2,6 +2,7 @@ import json
 import os
 import time
 from typing import Optional
+from loguru import logger
 
 BASE_CACHE_DIR = "embrapa_cache"
 DEFAULT_TTL = 60 * 60 * 24  # 24h
@@ -21,6 +22,7 @@ def is_cache_expired(path: str, ttl: int) -> bool:
 def save(opt: str, ano: int, subopt: Optional[str], data: list[dict]) -> None:
     os.makedirs(BASE_CACHE_DIR, exist_ok=True)
     path = _build_cache_path(opt, ano, subopt)
+    logger.info(f"Cache save: {path}")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 

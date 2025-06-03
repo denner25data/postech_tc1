@@ -6,14 +6,15 @@ authors = [
     {name = "denner25data",email = "denner25data@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<4.0"
 dependencies = [
     "fastapi (>=0.115.12,<0.116.0)",
     "uvicorn (>=0.34.3,<0.35.0)",
     "python-jose[cryptography] (>=3.5.0,<4.0.0)",
     "python-multipart (>=0.0.20,<0.0.21)",
     "httpx (>=0.28.1,<0.29.0)",
-    "beautifulsoup4 (>=4.13.4,<5.0.0)"
+    "beautifulsoup4 (>=4.13.4,<5.0.0)",
+    "loguru (>=0.7.3,<0.8.0)"
 ]
 
 [tool.poetry]
