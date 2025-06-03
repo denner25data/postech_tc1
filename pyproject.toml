@@ -6,7 +6,7 @@ authors = [
     {name = "denner25data",email = "denner25data@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "fastapi (>=0.115.12,<0.116.0)",
     "uvicorn (>=0.34.3,<0.35.0)",
