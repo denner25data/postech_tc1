@@ -38,16 +38,16 @@ poetry install
 
 ## Uso
 
-1. Rode a aplicação:
-
-```bash
-poetry run uvicorn postech_tc1.main:app --reload
-```
-
-2. Defina as credenciais no arquivo `config.py`:  
+1. Defina as credenciais no arquivo `config.py`:  
 ```python 
 ADMIN_USERNAME = "seu_usuario"  
 ADMIN_PASSWORD = "sua_senha"  
+```
+
+2. Rode a aplicação:
+
+```bash
+poetry run uvicorn postech_tc1.main:app --reload
 ```
 
 3. Acesse a API e a documentação em: 
