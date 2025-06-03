@@ -2,9 +2,11 @@
 
 ## Descrição
 
-Esta API em FastAPI realiza scraping de dados do site da Embrapa. Ela disponibiliza dados sobre produção, comercialização, processamento, importação e exportação, com filtros por ano e categorias específicas.
+Esta API em FastAPI realiza scraping de dados do site da Embrapa. Uma instituição pública brasileira de pesquisa, desenvolvimento e inovação na área agrícola. Ela disponibiliza dados sobre produção, comercialização, processamento, importação e exportação, com filtros por ano e categorias específicas.
 
 A API possui autenticação via JWT para controle de acesso e utiliza cache para otimizar consultas e evitar sobrecarga no site da Embrapa, além de possuir fallback em casos de falha no scrape.
+
+Próximos passos incluem a ingestão desses dataset em modelos de machine learning para prever tendências de mercado e também consumo em ferramentas de BI para encontrar insights ajudando a desenvolver soluções de pesquisa, desenvolvimento e inovação para a sustentabilidade da agricultura.
 
 ## Funcionalidades
 
