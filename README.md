@@ -6,8 +6,6 @@ Esta API em FastAPI realiza scraping de dados do site da Embrapa. Ela disponibil
 
 A API possui autenticação via JWT para controle de acesso e utiliza cache para otimizar consultas e evitar sobrecarga no site da Embrapa, além de possuir fallback em casos de falha no scrape.
 
----
-
 ## Funcionalidades
 
 - **Dados**: Produção, comercialização, processamento, importação/exportação.  
@@ -16,8 +14,6 @@ A API possui autenticação via JWT para controle de acesso e utiliza cache para
 - **Performance**: Cache de consultas (evita scraping repetitivo).  
 - **Resiliência**: Fallback com dados locais se o site da Embrapa estiver offline. 
 - **Documentação**: Documentação automática via Swagger UI.
-
----
 
 ## Instalação
 
@@ -39,8 +35,6 @@ curl -sSL https://install.python-poetry.org | python3 -
 ```bash
 poetry install
 ```
-
----
 
 ## Uso
 
@@ -98,8 +92,6 @@ Este projeto foi desenvolvido utilizando as seguintes bibliotecas e frameworks:
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-
 
 ## Contato
 
