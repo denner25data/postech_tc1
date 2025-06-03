@@ -9,6 +9,6 @@ router = APIRouter()
 async def dados_comercializacao(
     ano: int = Query(..., ge=1970, le=2023),
     refresh: bool = Query(False, description="Força atualização do cache"),
-    #_: dict = Depends(verify_token),
+    _: dict = Depends(verify_token),
 ):
     return await fetch_embrapa("comercializacao", ano, force=refresh)

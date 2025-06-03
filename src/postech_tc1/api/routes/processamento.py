@@ -11,6 +11,6 @@ async def dados_processamento(
     ano: int = Query(..., ge=1970, le=2023),
     tipo: TipoProcessamento = Query(...),
     refresh: bool = Query(False, description="Força atualização do cache"),
-    #_: dict = Depends(verify_token),
+    _: dict = Depends(verify_token),
 ):
     return await fetch_embrapa("processamento", ano, tipo.value, force=refresh)
